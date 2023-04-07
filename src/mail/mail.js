@@ -8,7 +8,7 @@ function sendEmail(to,otp) {
             pass: "191JFT4899"
         }
     });
-    // var cc = ["shekhjeel@gmail.com","shekhutsav1111@gmail.com"]
+   
     var str = "your otp = ";
     var a =otp;
     str+=a;
