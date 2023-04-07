@@ -12,15 +12,13 @@ exports.verifyToken = (req, res, next) => {
     if (!payload) {
         return res.status(401).send("unauthorized req")
     }
-    // console.log("in middleware");
-    //console.log(payload.subject);
+   
     console.log("payload"+payload.subject);
     console.log("token"+token)
  
     req.userId = payload.subject;
     req.email = payload.email;
-     //console.log(req.userId);
-    //console.log(req.email);
+    
     next()
 }
 

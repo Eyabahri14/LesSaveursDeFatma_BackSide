@@ -43,7 +43,7 @@ exports.file=( (req, res, next) => {
             limit = true;
         } 
         console.log(1)
-        // **********************
+ 
         try {
             console.log(12)
             
@@ -75,7 +75,7 @@ exports.file=( (req, res, next) => {
             console.log("some error while adding food by admin")
             return res.json({ errormsg: 'Somthing went wrong' });
         }
-        // **********************
+    
 
     }
   

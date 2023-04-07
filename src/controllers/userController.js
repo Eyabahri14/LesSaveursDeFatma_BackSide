@@ -2,7 +2,6 @@ var User = require('../models/user')
 var Food = require('../models/food')
 var Cart = require('../models/cart')
 var Order = require('../models/order')
-const stripe = require("stripe")("sk_test_51LPZsXLrlPimefFm97P8mQAFNdi2hjN6kvhfeBoTWrjfee7Uug7iydiws703AJIop4BlNCIgpJwXNcl6AslPB0gl00XJ69pEB5");
 exports.myProfile = (req, res) => {
     User.findOne({  _id: req.userId }, (error, user) => {
         if (error) {
@@ -90,10 +89,7 @@ function intcrementQuantity(req, res, id) {
                     res.json({ errormsg: "something went wrong!!" });
                 }
                 else {
-                    // **************************************************
-                    // const io = req.app.get('io');
-                    // io.emit("cart", "item added or removed from cart by user");
-                    // **************************************************
+                
                     console.log("edited(increment) quantity");
                 }
             })
@@ -138,9 +134,7 @@ function secondtimecart(req, res, oldcart, newitem) {
                     io.emit("cart", "item added or removed from cart by user");
                 }
                 else {
-                    // **************************************************
-                    // var x = await decrementQuantity(req, res, newitem._id);
-                    // **************************************************
+                  
                     const io = req.app.get('io');
                     io.emit("cart", "item added or removed from cart by user");
                     console.log("limited");
@@ -168,9 +162,7 @@ function secondtimecart(req, res, oldcart, newitem) {
                     io.emit("cart", "item added or removed from cart by user");
                 }
                 else {
-                    // **************************************************
-                    // var x = await decrementQuantity(req, res, newitem._id);
-                    // **************************************************
+                
                     const io = req.app.get('io');
                     io.emit("cart", "item added or removed from cart by user");
                     console.log("limited");
@@ -304,9 +296,7 @@ exports.deleteFromCart = (req, res) => {
                         console.log("delete in unlimited");
                     }
                     else {
-                        // *************************************************
-                        // intcrementQuantity(req,res,req.body._id)
-                        // **************************************************
+                    
                     }
                     const io = req.app.get('io');
                     io.emit("cart", "item added or removed from cart by user");
@@ -327,9 +317,7 @@ exports.deleteFromCart = (req, res) => {
                                 console.log("delete in unlimited");
                             }
                             else {
-                                // **************************************************
-                                // intcrementQuantity(req,res,req.body._id)
-                                // **************************************************
+                               
                             }
                             const io = req.app.get('io');
                             io.emit("cart", "item added or removed from cart by user");

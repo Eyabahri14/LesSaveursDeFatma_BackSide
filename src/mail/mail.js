@@ -17,7 +17,7 @@ function sendEmail(to,otp) {
         from: 'eya.bahri@esprit.tn',
         to: to,
         // cc:cc,
-        subject: 'Reset Password Les délices de fatma!!',
+        subject: 'Reset Password Les saveurs de fatma!!',
         text: str,
         html:require('./otpEmailView')({otp:otp})
     };
