@@ -21,6 +21,10 @@ router.get('/getoneorder/:id',verifyTokenmiddleware.verifyToken,adminController.
 router.get('/getoneuser/:id',verifyTokenmiddleware.verifyToken,adminController.getOneuser)
 router.get('/getorderhistory/:date',verifyTokenmiddleware.verifyToken,adminController.getorderHistory)
 router.post('/updatepaymentstatus',verifyTokenmiddleware.verifyToken,adminController.updatePaymentstatus)
+router.get('/getallfeedback',verifyTokenmiddleware.verifyToken,adminController.getallFeedback)
+router.delete('/deletefeedback/:id',verifyTokenmiddleware.verifyToken,adminController.deleteFeedback)
+router.get('/getqrcode/:id',verifyTokenmiddleware.verifyToken,adminController.getQrcode)
+
 
 
 

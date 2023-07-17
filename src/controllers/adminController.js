@@ -3,8 +3,8 @@ const Food = require('../models/food')
 const User=require('../models/user')
 var Order = require('../models/order')
 var Cart = require('../models/cart')
-//var Feedback = require('../models/feedback')
-//var QRCode = require('qrcode')
+var QRCode = require('qrcode')
+var Feedback = require('../models/feedback')
 var multer=require("multer")
 
 
@@ -431,6 +431,52 @@ exports.updatePaymentstatus = (req, res) => {
             const io = req.app.get('io');
             io.emit(req.body.email, "order status updated");
             res.json({ msg: "successfully updated order payment status!" });
+        }
+    })
+}
+
+exports.getallFeedback = (req, res) => {
+    Feedback.find({}, (err, feedbacks) => {
+        if (err) {
+            console.log("error in get all feedback by admin");
+            return res.json({ errormsg: 'Somthing went wrong' });
+        }
+        else {
+            feedbacks = feedbacks.reverse() 
+            res.json({ msg: feedbacks });
+        }
+    })
+}
+
+
+exports.deleteFeedback = (req, res) => {
+    Feedback.deleteOne({ _id: req.params.id }, (error) => {
+        if (error) {
+            console.log("error in delete feedback by admin");
+            return res.json({ errormsg: 'Somthing went wrong' });
+        }
+    })
+    return res.json({ msg: 'successfully feedback deleted' });
+}
+
+exports.getQrcode = (req, res) => {
+    var id = req.params.id
+    Order.findOne({ _id: id }, (err, order) => {
+        if (err) {
+            console.log("error while generating qr code of order by admin");
+            return res.json({ errormsg: 'Somthing went wrong' });
+        }
+        if (order.status == "completed" || order.status == "picked up") {
+            QRCode.toDataURL(id).then(url => {
+                res.json({ msg: url });
+            }).catch(err => {
+                console.log("error while generating qr code of order by admin");
+                return res.json({ errormsg: 'error while generating qr code' });
+            })
+        }
+        else {
+            console.log("order status must be completed or pickup for getting QR code");
+            return res.json({ errormsg: 'error while generating qr code' });
         }
     })
 }

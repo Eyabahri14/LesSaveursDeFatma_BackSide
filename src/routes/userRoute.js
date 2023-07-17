@@ -16,4 +16,5 @@ router.get('/getalluserorders2', verifyTokenmiddleware.verifyToken,useController
 router.get('/getoneorder/:id',verifyTokenmiddleware.verifyToken,useController.getoneOrder)
 router.post('/paymentdone', verifyTokenmiddleware.verifyToken,useController.paymentDone)
 router.post('/paymentdoneweb', verifyTokenmiddleware.verifyToken,useController.paymentDoneWeb)
+router.post('/sendfeedback', verifyTokenmiddleware.verifyToken,useController.sendFeedback)
 module.exports = router

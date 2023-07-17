@@ -1,6 +1,7 @@
 var User = require('../models/user')
 var Food = require('../models/food')
 var Cart = require('../models/cart')
+var Feedback=require('../models/feedback')
 var Order = require('../models/order')
 exports.myProfile = (req, res) => {
     User.findOne({  _id: req.userId }, (error, user) => {
@@ -535,6 +536,28 @@ exports.paymentDoneWeb = (req, res) => {
             io.emit(req.body.email, "payment status updated");
             io.emit("orderdelete", "payment status updated");
             res.json({ msg: "successfully updated payment status!" });
+        }
+    })
+}
+
+exports.sendFeedback = (req, res) => {
+    var today = new Date();
+    var date = today.toJSON().slice(0, 10);
+    var fb = new Feedback({
+        userid: req.userId,
+        useremail: req.email,
+        name: req.body.name,
+        feedback: req.body.feedback,
+        date: date
+    })
+    fb.save(async (error, a) => {
+        if (error) {
+            console.log("something went wrong while sending feedback!!")
+            res.json({ errormsg: "something went wrong!!" });
+        }
+        else {
+            console.log("successfully send your feedback");
+            res.json({ msg: "successfully send your feedback" });
         }
     })
 }
