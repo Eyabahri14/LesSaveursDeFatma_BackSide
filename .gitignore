@@ -1,0 +1,12 @@
+#exclure le node-modules car on a deja le package.json 
+node-modules
+#stoque les fichiers de build
+build
+#fichier de journalisation utilisés pour stoqués les erreurs liés à npm 
+npm-debug.log
+#exclure le .env car il contient des donnés sensibles 
+.env
+#on enléve le fichier package-lock.json psq il enregistre les versions exactes de toutes les dépendances du projet=>structure de dépendances figée 
+package-lock.json
+#exclure les fichiers de configurations spécifiques à vscode
+.vscode
