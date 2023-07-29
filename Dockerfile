@@ -1,5 +1,5 @@
 #Télechargement de l'image NodeJs
-FROM node:18
+FROM node
 
 #Définition du répertoire de travail à l'intérieur du conteneur 
 WORKDIR /app 
