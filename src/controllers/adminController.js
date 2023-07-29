@@ -7,6 +7,10 @@ var QRCode = require('qrcode')
 var Feedback = require('../models/feedback')
 var multer=require("multer")
 
+exports.dockerCheck = (req, res, next) => {
+    res.json({ msg: "Docker All ok" })
+}
+
 
 exports.file=( (req, res, next) => {
     const file = req.file;

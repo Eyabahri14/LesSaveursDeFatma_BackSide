@@ -5,6 +5,7 @@ const verifyTokenmiddleware = require('../middleware/verifyToken')
 const fileUploadmiddleware = require('../middleware/fileUpload') 
 require('dotenv').config()
 
+router.get('/dockerCheck',adminController.dockerCheck)
 router.post('/file',fileUploadmiddleware.upload.single('file'),adminController.file)
 router.post('/addfood',fileUploadmiddleware.upload.single('file'),adminController.addFood)
 router.get('/getallfooditem',adminController.getallFoodItem)
