@@ -1,19 +1,20 @@
-#Télechargement de l'image NodeJs
+# Downloading the NodeJs image
 FROM node
 
-#Définition du répertoire de travail à l'intérieur du conteneur 
-WORKDIR /app 
+# Defining the working directory inside the container
+WORKDIR /app
 
-#Copie des fichiers package.json et package-lock.json (si présent) du répertoire de construction vers le répertoire de destination (WORKDIR)
+# Copying package.json and package-lock.json (if present) files from the build directory to the destination directory (WORKDIR)
 COPY package*.json ./
 
-#installation des dépendances Nodejs avant le build
+# Installing Node.js dependencies before the build
 RUN npm install
 
-#copie de l'ensemble du projet vers le repertoire de destination
-COPY . . 
+# Copying the entire project to the destination directory
+COPY . .
 
-# Exposer le port 3000 du conteneur
+# Exposing port 3000 of the container
 EXPOSE 3000
 
+# Command to run when the container starts
 CMD ["npm", "start"]
