@@ -9,12 +9,8 @@ COPY package*.json ./
 
 # Installing Node.js dependencies before the build
 RUN npm install
-
 # Copying the entire project to the destination directory
 COPY . .
 
 # Exposing port 3000 of the container
 EXPOSE 3000
-
-# Command to run when the container starts
-CMD ["npm", "start"]
