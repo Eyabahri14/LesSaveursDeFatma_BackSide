@@ -6,11 +6,21 @@ var bcrypt = require('bcrypt')
 var sendMail = require('../mail/mail')
 require('dotenv').config()
 
+exports.getAllUsers = (req, res) => {
+    User.find({}, (error, users) => {
+      if (error) {
+        console.log("something went wrong while fetching users!!");
+        res.json({ errormsg: "something went wrong while fetching users!!" });
+      } else {
+        res.status(200).json({ users: users });
+      }
+    }).select("-password").select("-blocked").select("-role");
+  };
 
 
 
 exports.getCheck = (req, res, next) => {
-    res.json({ msg: "All ok" })
+    res.json({ msg: "All ok here" })
 }
 
 exports.register = async (req, res) => {

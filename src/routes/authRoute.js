@@ -15,4 +15,6 @@ router.post('/reset-password-done', authController.resestPasswordDone)
 
 router.get('/check', authController.getCheck)
 
+router.get('/users',authController.getAllUsers)
+
 module.exports=router;

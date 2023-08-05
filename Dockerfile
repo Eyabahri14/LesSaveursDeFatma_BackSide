@@ -1,5 +1,5 @@
 # Downloading the NodeJs image
-FROM node
+FROM node:alpine
 
 # Defining the working directory inside the container
 WORKDIR /app

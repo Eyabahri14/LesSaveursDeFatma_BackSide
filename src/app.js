@@ -45,4 +45,9 @@ app.use("/", auth);
 app.use("/", admin);
 app.use("/",user);
 
+app.get('/',(req,res)=> {
+  res.status(200).json({data:"Its fucking working!"});
+})
+
+
 module.exports = app;
